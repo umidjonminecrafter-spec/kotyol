@@ -10,6 +10,8 @@ class SaleCreateSerializer(serializers.Serializer):
     discount_amount = serializers.FloatField(required=False, allow_null=True, default=0.0)
     tax_amount = serializers.FloatField(required=False, allow_null=True, default=0.0)
     exchange_rate_at_creation = serializers.FloatField(required=False, allow_null=True, default=1.0)
+    payment_status = serializers.CharField(required=False, allow_null=True, allow_blank=True, default="UNPAID")
+    delivery_status = serializers.CharField(required=False, allow_null=True, allow_blank=True, default="PENDING")
     assigned_employee_id = serializers.CharField(required=False, allow_null=True, allow_blank=True, default="")
     assigned_employee_name = serializers.CharField(required=False, allow_null=True, allow_blank=True, default="")
     warranty_period = serializers.CharField(required=False, allow_null=True, allow_blank=True, default="")

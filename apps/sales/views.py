@@ -78,3 +78,12 @@ def sale_detail_view(request, id):
     )
     return Response({"success": True, "data": {"id": id, "deleted": True}})
 
+
+@api_view(['GET'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
+def sale_receipt_view(request, id):
+    receipt_data = SalesService.generate_receipt_data(id)
+    return Response({"success": True, "data": receipt_data})
+
+

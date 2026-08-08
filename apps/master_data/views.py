@@ -144,9 +144,9 @@ def company_profile_view(request):
     # Also sync updated name/phone to user's registered organization details
     if "name" in update_data and update_data["name"] and request.user.organization_name != update_data["name"]:
         request.user.organization_name = update_data["name"]
-        if request.user.organization_id_fk:
-            request.user.organization_id_fk.name = update_data["name"]
-            request.user.organization_id_fk.save()
+        if hasattr(request.user, "organization") and request.user.organization:
+            request.user.organization.name = update_data["name"]
+            request.user.organization.save()
         request.user.save()
 
     record_audit_log(

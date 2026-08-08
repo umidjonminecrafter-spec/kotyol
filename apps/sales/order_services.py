@@ -230,7 +230,7 @@ class OrderService:
             batch = ProductionBatch.objects.create(
                 batch_number=batch_number,
                 boiler_id=boiler_id,
-                target_quantity=int(order.quantity),
+                target_quantity=int(round(float(order.quantity or 1))),
                 completed_quantity=0,
                 defect_quantity=0,
                 status="PLANNED",
