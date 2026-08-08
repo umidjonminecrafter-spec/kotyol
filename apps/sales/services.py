@@ -151,6 +151,32 @@ class SalesService:
         elif sale.product:
             item_name = sale.product.name
 
+        cust_name = sale.customer.name if sale.customer else "Noma'lum mijoz"
+        cust_phone = (sale.customer.phone or "").strip() if sale.customer else ""
+        cust_address = (sale.customer.address or "").strip() if sale.customer else ""
+
+        if sale.customer and sale.customer.address and "{" in sale.customer.address:
+            try:
+                import json
+                parsed = json.loads(sale.customer.address)
+                if isinstance(parsed, dict):
+                    if not cust_phone:
+                        cust_phone = str(parsed.get("phone") or parsed.get("altPhone") or parsed.get("mobile") or "").strip()
+                    addr_parts = []
+                    if parsed.get("region"):
+                        addr_parts.append(str(parsed["region"]))
+                    if parsed.get("district"):
+                        addr_parts.append(str(parsed["district"]))
+                    if parsed.get("address"):
+                        addr_parts.append(str(parsed["address"]))
+                    if addr_parts:
+                        cust_address = ", ".join(addr_parts)
+            except Exception:
+                pass
+
+        if not cust_address:
+            cust_address = sale.delivery_location or ""
+
         return {
             "receipt_title": "SOTUV CHEKI / SCHYOT-FAKTURA",
             "company": {
@@ -169,13 +195,13 @@ class SalesService:
                 "assigned_employee": sale.assigned_employee_name or "",
             },
             "customer": {
-                "name": sale.customer.name if sale.customer else "Noma'lum mijoz",
-                "phone": sale.customer.phone if sale.customer else "",
-                "address": sale.customer.address if sale.customer else "",
+                "name": cust_name,
+                "phone": cust_phone,
+                "address": cust_address,
             },
-            "customer_name": sale.customer.name if sale.customer else "Noma'lum mijoz",
-            "customer_phone": sale.customer.phone if sale.customer else "",
-            "customer_address": sale.customer.address if sale.customer else "",
+            "customer_name": cust_name,
+            "customer_phone": cust_phone,
+            "customer_address": cust_address,
             "item": {
                 "name": item_name,
                 "quantity": float(sale.quantity),

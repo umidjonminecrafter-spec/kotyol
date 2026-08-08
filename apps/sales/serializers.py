@@ -61,10 +61,46 @@ class SaleResponseSerializer(serializers.Serializer):
         return obj.customer.name if getattr(obj, 'customer', None) else ""
 
     def get_customer_phone(self, obj):
-        return obj.customer.phone if getattr(obj, 'customer', None) else ""
+        if not getattr(obj, 'customer', None):
+            return ""
+        c = obj.customer
+        if c.phone and c.phone.strip():
+            return c.phone.strip()
+        raw_addr = c.address or ""
+        if "{" in raw_addr:
+            try:
+                import json
+                parsed = json.loads(raw_addr)
+                if isinstance(parsed, dict):
+                    p = parsed.get("phone") or parsed.get("altPhone") or parsed.get("mobile") or parsed.get("telephone")
+                    if p:
+                        return str(p).strip()
+            except Exception:
+                pass
+        return ""
 
     def get_customer_address(self, obj):
-        return obj.customer.address if getattr(obj, 'customer', None) else ""
+        if not getattr(obj, 'customer', None):
+            return getattr(obj, 'delivery_location', "") or ""
+        c = obj.customer
+        raw_addr = c.address or ""
+        if raw_addr.startswith("{") and "}" in raw_addr:
+            try:
+                import json
+                parsed = json.loads(raw_addr)
+                if isinstance(parsed, dict):
+                    addr_parts = []
+                    if parsed.get("region"):
+                        addr_parts.append(str(parsed["region"]))
+                    if parsed.get("district"):
+                        addr_parts.append(str(parsed["district"]))
+                    if parsed.get("address"):
+                        addr_parts.append(str(parsed["address"]))
+                    if addr_parts:
+                        return ", ".join(addr_parts)
+            except Exception:
+                pass
+        return raw_addr or getattr(obj, 'delivery_location', "") or ""
 
     def get_customer_email(self, obj):
         return obj.customer.email if getattr(obj, 'customer', None) else ""

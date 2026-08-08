@@ -247,6 +247,19 @@ class MasterDataService:
             if e_val is not None:
                 data["exchange_rate"] = float(e_val)
 
+        if "phone" in model_fields:
+            p_val = data.get("phone") or data.get("mobile") or data.get("altPhone")
+            if not p_val and "address" in data and isinstance(data["address"], str) and "{" in data["address"]:
+                try:
+                    import json
+                    parsed_addr = json.loads(data["address"])
+                    if isinstance(parsed_addr, dict):
+                        p_val = parsed_addr.get("phone") or parsed_addr.get("altPhone") or parsed_addr.get("mobile")
+                except Exception:
+                    pass
+            if p_val:
+                data["phone"] = str(p_val).strip()
+
         # 2. Resolve code
         code_val = data.get("code") or data.get("symbol") or data.get("short_name") or data.get("shortName")
         if code_val and str(code_val).strip() and str(code_val).strip() not in ["undefined", "null", ""]:
@@ -298,6 +311,19 @@ class MasterDataService:
             e_val = data.get("exchange_rate") or data.get("rate_to_usd") or data.get("rateToUSD")
             if e_val is not None:
                 data["exchange_rate"] = float(e_val)
+
+        if "phone" in model_fields:
+            p_val = data.get("phone") or data.get("mobile") or data.get("altPhone")
+            if not p_val and "address" in data and isinstance(data["address"], str) and "{" in data["address"]:
+                try:
+                    import json
+                    parsed_addr = json.loads(data["address"])
+                    if isinstance(parsed_addr, dict):
+                        p_val = parsed_addr.get("phone") or parsed_addr.get("altPhone") or parsed_addr.get("mobile")
+                except Exception:
+                    pass
+            if p_val:
+                data["phone"] = str(p_val).strip()
 
         for k, v in data.items():
             if k in model_fields and v is not None and hasattr(item, k):
