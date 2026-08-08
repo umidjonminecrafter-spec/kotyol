@@ -29,6 +29,9 @@ class SaleResponseSerializer(serializers.Serializer):
     invoice_number = serializers.CharField()
     customer_id = serializers.SerializerMethodField()
     customer_name = serializers.SerializerMethodField()
+    customer_phone = serializers.SerializerMethodField()
+    customer_address = serializers.SerializerMethodField()
+    customer_email = serializers.SerializerMethodField()
     boiler_id = serializers.SerializerMethodField()
     product_id = serializers.SerializerMethodField()
     quantity = serializers.FloatField()
@@ -56,6 +59,15 @@ class SaleResponseSerializer(serializers.Serializer):
 
     def get_customer_name(self, obj):
         return obj.customer.name if getattr(obj, 'customer', None) else ""
+
+    def get_customer_phone(self, obj):
+        return obj.customer.phone if getattr(obj, 'customer', None) else ""
+
+    def get_customer_address(self, obj):
+        return obj.customer.address if getattr(obj, 'customer', None) else ""
+
+    def get_customer_email(self, obj):
+        return obj.customer.email if getattr(obj, 'customer', None) else ""
 
     def get_boiler_id(self, obj):
         return obj.boiler.id if getattr(obj, 'boiler', None) else ""

@@ -173,6 +173,9 @@ class SalesService:
                 "phone": sale.customer.phone if sale.customer else "",
                 "address": sale.customer.address if sale.customer else "",
             },
+            "customer_name": sale.customer.name if sale.customer else "Noma'lum mijoz",
+            "customer_phone": sale.customer.phone if sale.customer else "",
+            "customer_address": sale.customer.address if sale.customer else "",
             "item": {
                 "name": item_name,
                 "quantity": float(sale.quantity),
