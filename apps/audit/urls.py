@@ -5,4 +5,6 @@ urlpatterns = [
     re_path(r'^/?$', views.list_audit_logs_view),
     re_path(r'^/logs/?$', views.list_audit_logs_view),
     re_path(r'^/list/?$', views.list_audit_logs_view),
+    re_path(r'^/(?P<log_id>[^/]+)/?$', views.get_audit_log_detail_view),
 ]
+
