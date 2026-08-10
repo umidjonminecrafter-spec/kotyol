@@ -224,6 +224,84 @@ class SalesService:
         }
 
     @staticmethod
+    def generate_escpos_data(sale_id: str) -> dict:
+        try:
+            sale = Sale.objects.get(id=sale_id)
+        except Sale.DoesNotExist:
+            raise CustomAppException(message="Sotuv hujjati topilmadi", status_code=404)
+
+        from apps.master_data.models import Company
+        company = Company.objects.first()
+
+        company_name = company.name if company else "KOTYOL ERP CENTRAL"
+        company_phone = company.phone if company else ""
+        company_address = company.address if company else ""
+
+        cust_name = sale.customer.name if sale.customer else "Noma'lum mijoz"
+        cust_phone = (sale.customer.phone or "").strip() if sale.customer else ""
+        if sale.customer and sale.customer.address and "{" in sale.customer.address:
+            try:
+                import json
+                parsed = json.loads(sale.customer.address)
+                if isinstance(parsed, dict) and not cust_phone:
+                    cust_phone = str(parsed.get("phone") or parsed.get("altPhone") or parsed.get("mobile") or "").strip()
+            except Exception:
+                pass
+
+        item_name = "Kotyol uskunasi"
+        if sale.boiler:
+            item_name = sale.boiler.name
+        elif sale.product:
+            item_name = sale.product.name
+
+        inv_num = sale.invoice_number or f"DOC-{sale.id[:6]}"
+        date_str = sale.created_at.strftime("%Y-%m-%d %H:%M:%S") if sale.created_at else ""
+
+        lines = []
+        lines.append(f"{company_name.center(32)}")
+        if company_address:
+            lines.append(f"{company_address[:32].center(32)}")
+        if company_phone:
+            lines.append(f"Tel: {company_phone}".center(32))
+        lines.append("=" * 32)
+        lines.append(f"FAKTURA №: {inv_num}")
+        lines.append(f"Sana: {date_str}")
+        if sale.assigned_employee_name:
+            lines.append(f"Xodim: {sale.assigned_employee_name}")
+        lines.append("-" * 32)
+        lines.append(f"Xaridor: {cust_name}")
+        if cust_phone:
+            lines.append(f"Tel: {cust_phone}")
+        lines.append("-" * 32)
+        lines.append(f"{item_name[:20]:<20} {int(sale.quantity)}dona")
+        lines.append(f"Narx: {int(sale.unit_price):,} so'm".replace(",", " "))
+        lines.append(f"Jami: {int(sale.subtotal):,} so'm".replace(",", " "))
+        if sale.discount_amount > 0:
+            lines.append(f"Chegirma: -{int(sale.discount_amount):,} so'm".replace(",", " "))
+        if sale.tax_amount > 0:
+            lines.append(f"Soliq: +{int(sale.tax_amount):,} so'm".replace(",", " "))
+        lines.append("=" * 32)
+        lines.append(f"TO'LOV SUMMASI: {int(sale.total_amount):,} UZS".replace(",", " "))
+        lines.append(f"Holati: {sale.payment_status}")
+        lines.append("=" * 32)
+        if sale.warranty_period:
+            lines.append(f"Kafolat muddati: {sale.warranty_period}")
+        lines.append("Xaridingiz uchun rahmat!".center(32))
+        lines.append("\n\n")
+
+        raw_text = "\n".join(lines)
+        escpos_hex = "1b401b6101" + raw_text.encode('utf-8', errors='ignore').hex() + "1d564103"
+
+        return {
+            "sale_id": sale.id,
+            "invoice_number": inv_num,
+            "raw_text": raw_text,
+            "escpos_hex": escpos_hex,
+            "paper_width": "80mm/58mm",
+            "auto_cut": True
+        }
+
+    @staticmethod
     def get_multi(
         page: int = 1,
         limit: int = 20

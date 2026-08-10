@@ -87,3 +87,12 @@ def sale_receipt_view(request, id):
     return Response({"success": True, "data": receipt_data})
 
 
+@api_view(['GET'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
+def sale_escpos_view(request, id):
+    escpos_data = SalesService.generate_escpos_data(id)
+    return Response({"success": True, "data": escpos_data})
+
+
+
