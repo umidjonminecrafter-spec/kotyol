@@ -332,11 +332,28 @@ class SalesService:
             margin: 0mm;
         }}
         @media print {{
+            .no-print {{
+                display: none !important;
+            }}
             body {{
                 width: 78mm;
                 margin: 0 auto;
                 padding: 2mm 0;
             }}
+        }}
+        .print-btn {{
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: bold;
+            text-align: center;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 10px;
         }}
         body {{
             font-family: 'Consolas', 'Courier New', monospace;
@@ -364,6 +381,8 @@ class SalesService:
     </style>
 </head>
 <body>
+    <button onclick="window.print()" class="print-btn no-print">🖨 CHOP ETISH</button>
+
     <div class="text-center header-title">{comp['name']}</div>
     {f'<div class="text-center">{comp["address"]}</div>' if comp["address"] else ''}
     {f'<div class="text-center">Tel: {comp["phone"]}</div>' if comp["phone"] else ''}
@@ -411,23 +430,9 @@ class SalesService:
     
     <div class="double-divider"></div>
     <div class="text-center bold" style="margin-top: 6px;">Xaridingiz uchun rahmat!</div>
-
-    <script>
-        var hasPrinted = false;
-        window.addEventListener('DOMContentLoaded', function() {{
-            if (!hasPrinted) {{
-                hasPrinted = true;
-                setTimeout(function() {{
-                    window.print();
-                }}, 300);
-            }}
-        }});
-        window.onafterprint = function() {{
-            try {{ window.close(); }} catch(e) {{}}
-        }};
-    </script>
 </body>
 </html>"""
+        return html_content
         return html_content
 
     @staticmethod
