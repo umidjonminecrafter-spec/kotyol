@@ -1,0 +1,251 @@
+[2026-08-10 13:22:45] ============================================================
+[2026-08-10 13:22:45]   Kotyol ERP - Local POS Thermal Print Agent v2.0 (LAN Direct)
+[2026-08-10 13:22:45] ============================================================
+[2026-08-10 13:22:45]   Server ishga tushdi: http://127.0.0.1:9123
+[2026-08-10 13:22:45]   LAN Printer IP: 192.168.1.10:9100
+[2026-08-10 13:22:45]   Standart printer: XP-80C
+[2026-08-10 13:22:45]   Status va printerlarni ko'rish: http://localhost:9123/
+[2026-08-10 13:22:45]   Brauzer so'rovlarini kutmoqda...
+[2026-08-10 13:22:45] ============================================================
+[2026-08-10 13:23:42] [HTTP] 127.0.0.1 - "OPTIONS /print HTTP/1.1" 200 -
+[2026-08-10 13:23:42] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-10 13:23:42] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-10 13:23:42] Tarmoq printeriga muvaffaqiyatli uzatildi (LAN IP: 192.168.1.10:9100)
+[2026-08-10 13:23:42] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-10 13:24:11] [HTTP] 127.0.0.1 - "OPTIONS /print HTTP/1.1" 200 -
+[2026-08-10 13:24:11] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-10 13:24:11] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-10 13:24:11] Tarmoq printeriga muvaffaqiyatli uzatildi (LAN IP: 192.168.1.10:9100)
+[2026-08-10 13:24:11] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:26:25] [HTTP] 127.0.0.1 - "OPTIONS /print HTTP/1.1" 200 -
+[2026-08-11 09:26:25] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:26:25] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:26:28] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:26:28] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:26:28] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:26:28] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:26:42] [HTTP] 127.0.0.1 - "OPTIONS /print HTTP/1.1" 200 -
+[2026-08-11 09:26:42] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:26:42] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:26:45] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:26:45] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:26:45] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:26:45] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:26:54] [HTTP] 127.0.0.1 - "OPTIONS /print HTTP/1.1" 200 -
+[2026-08-11 09:26:55] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:26:55] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:26:58] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:26:58] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:26:58] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:26:58] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:26:58] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:26:58] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:27:01] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:27:01] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:27:01] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:27:01] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:27:01] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:27:01] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:27:04] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:27:04] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:27:04] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:27:04] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:27:04] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:27:04] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:27:07] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:27:07] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:27:07] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:27:07] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:27:07] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:27:07] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:27:08] ============================================================
+[2026-08-11 09:27:08]   Kotyol ERP - Local POS Thermal Print Agent v2.0 (LAN Direct)
+[2026-08-11 09:27:08] ============================================================
+[2026-08-11 09:27:08]   Server ishga tushdi: http://127.0.0.1:9123
+[2026-08-11 09:27:08]   LAN Printer IP: 192.168.1.10:9100
+[2026-08-11 09:27:08]   Standart printer: XP-80C
+[2026-08-11 09:27:08]   Status va printerlarni ko'rish: http://localhost:9123/
+[2026-08-11 09:27:08]   Brauzer so'rovlarini kutmoqda...
+[2026-08-11 09:27:08] ============================================================
+[2026-08-11 09:27:08] [HTTP] 127.0.0.1 - "OPTIONS /print HTTP/1.1" 200 -
+[2026-08-11 09:27:08] [HTTP] 127.0.0.1 - "OPTIONS /print HTTP/1.1" 200 -
+[2026-08-11 09:27:08] [HTTP] 127.0.0.1 - "OPTIONS /print HTTP/1.1" 200 -
+[2026-08-11 09:27:08] [HTTP] 127.0.0.1 - "OPTIONS /print HTTP/1.1" 200 -
+[2026-08-11 09:27:08] [HTTP] 127.0.0.1 - "OPTIONS /print HTTP/1.1" 200 -
+[2026-08-11 09:27:08] [HTTP] 127.0.0.1 - "OPTIONS /print HTTP/1.1" 200 -
+[2026-08-11 09:27:08] [HTTP] 127.0.0.1 - "OPTIONS /print HTTP/1.1" 200 -
+[2026-08-11 09:27:08] [HTTP] 127.0.0.1 - "OPTIONS /print HTTP/1.1" 200 -
+[2026-08-11 09:27:08] [HTTP] 127.0.0.1 - "OPTIONS /print HTTP/1.1" 200 -
+[2026-08-11 09:27:08] [HTTP] 127.0.0.1 - "OPTIONS /print HTTP/1.1" 200 -
+[2026-08-11 09:27:08] [HTTP] 127.0.0.1 - "OPTIONS /print HTTP/1.1" 200 -
+[2026-08-11 09:27:08] [HTTP] 127.0.0.1 - "OPTIONS /print HTTP/1.1" 200 -
+[2026-08-11 09:27:08] [HTTP] 127.0.0.1 - "OPTIONS /print HTTP/1.1" 200 -
+[2026-08-11 09:27:08] [HTTP] 127.0.0.1 - "OPTIONS /print HTTP/1.1" 200 -
+[2026-08-11 09:27:08] [HTTP] 127.0.0.1 - "OPTIONS /print HTTP/1.1" 200 -
+[2026-08-11 09:27:08] [HTTP] 127.0.0.1 - "OPTIONS /print HTTP/1.1" 200 -
+[2026-08-11 09:27:08] [HTTP] 127.0.0.1 - "OPTIONS /print HTTP/1.1" 200 -
+[2026-08-11 09:27:08] [HTTP] 127.0.0.1 - "OPTIONS /print HTTP/1.1" 200 -
+[2026-08-11 09:27:09] [HTTP] 127.0.0.1 - "OPTIONS /print HTTP/1.1" 200 -
+[2026-08-11 09:27:09] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:27:09] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:27:12] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:27:12] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:27:12] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:27:12] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:27:12] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:27:12] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:27:15] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:27:15] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:27:15] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:27:15] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:27:15] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:27:15] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:27:18] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:27:18] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:27:18] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:27:18] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:27:18] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:27:18] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:27:21] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:27:21] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:27:21] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:27:21] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:27:21] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:27:21] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:27:24] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:27:24] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:27:24] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:27:24] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:27:24] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:27:24] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:27:27] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:27:27] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:27:27] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:27:27] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:27:27] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:27:27] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:27:30] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:27:30] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:27:30] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:27:30] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:27:30] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:27:30] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:27:33] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:27:33] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:27:33] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:27:33] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:27:33] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:27:33] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:27:36] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:27:36] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:27:36] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:27:36] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:27:36] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:27:36] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:27:39] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:27:39] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:27:39] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:27:39] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:27:39] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:27:39] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:27:42] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:27:42] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:27:42] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:27:42] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:27:42] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:27:42] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:27:45] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:27:45] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:27:45] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:27:45] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:27:45] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:27:45] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:27:48] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:27:48] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:27:48] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:27:48] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:27:48] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:27:48] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:27:51] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:27:51] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:27:52] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:27:52] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:27:52] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:27:52] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:27:55] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:27:55] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:27:55] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:27:55] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:27:55] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:27:55] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:27:58] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:27:58] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:27:58] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:27:58] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:27:58] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:27:58] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:28:01] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:28:01] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:28:01] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:28:01] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:28:01] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:28:01] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:28:04] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:28:04] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:28:04] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:28:04] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:28:04] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:28:04] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:28:07] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:28:07] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:28:07] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:28:07] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:28:07] [HTTP] 127.0.0.1 - "OPTIONS /print HTTP/1.1" 200 -
+[2026-08-11 09:28:07] [HTTP] 127.0.0.1 - "OPTIONS /print HTTP/1.1" 200 -
+[2026-08-11 09:28:07] [HTTP] 127.0.0.1 - "OPTIONS /print HTTP/1.1" 200 -
+[2026-08-11 09:28:07] [HTTP] 127.0.0.1 - "OPTIONS /print HTTP/1.1" 200 -
+[2026-08-11 09:28:07] [HTTP] 127.0.0.1 - "OPTIONS /print HTTP/1.1" 200 -
+[2026-08-11 09:28:07] [HTTP] 127.0.0.1 - "OPTIONS /print HTTP/1.1" 200 -
+[2026-08-11 09:28:07] [HTTP] 127.0.0.1 - "OPTIONS /print HTTP/1.1" 200 -
+[2026-08-11 09:28:07] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:28:07] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:28:10] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:28:10] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:28:10] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:28:10] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:28:10] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:28:10] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:28:13] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:28:13] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:28:13] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:28:13] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:28:13] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:28:13] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:28:16] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:28:16] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:28:16] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:28:16] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:28:16] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:28:16] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:28:19] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:28:19] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:28:19] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:28:19] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:28:19] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:28:19] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:28:22] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:28:22] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:28:22] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:28:22] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:28:22] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:28:22] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:28:25] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:28:25] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:28:25] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:28:25] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -
+[2026-08-11 09:28:25] --> Brauzerdan chek chop etish so'rovi keldi! (Mo'ljal LAN IP: 192.168.1.10)
+[2026-08-11 09:28:25] Tarmoq printeriga (LAN IP: 192.168.1.10:9100) ulanish urunilmoqda...
+[2026-08-11 09:28:28] LAN IP (192.168.1.10:9100) tarmoq ulanish xatosi: timed out
+[2026-08-11 09:28:28] Windows Spooler orqali urunmoqda: XP-80C
+[2026-08-11 09:28:29] Printerga muvaffaqiyatli uzatildi (win32print): XP-80C
+[2026-08-11 09:28:29] [HTTP] 127.0.0.1 - "POST /print HTTP/1.1" 200 -

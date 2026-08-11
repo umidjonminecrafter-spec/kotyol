@@ -95,4 +95,13 @@ def sale_escpos_view(request, id):
     return Response({"success": True, "data": escpos_data})
 
 
+@api_view(['GET'])
+@permission_classes([])
+def sale_print_html_view(request, id):
+    from django.http import HttpResponse
+    html_content = SalesService.generate_thermal_html(id)
+    return HttpResponse(html_content, content_type="text/html; charset=utf-8")
+
+
+
 

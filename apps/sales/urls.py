@@ -6,6 +6,7 @@ urlpatterns = [
     re_path(r'^/list/?$', views.sales_list_create_view),
     re_path(r'^/(?P<id>[^/]+)/receipt/?$', views.sale_receipt_view),
     re_path(r'^/(?P<id>[^/]+)/escpos/?$', views.sale_escpos_view),
+    re_path(r'^/(?P<id>[^/]+)/print_html/?$', views.sale_print_html_view),
     re_path(r'^/(?P<id>[^/]+)/delete/?$', views.sale_detail_view),
     re_path(r'^/(?P<id>[^/]+)/?$', views.sale_detail_view),
     re_path(r'^/?$', views.sales_list_create_view),

@@ -264,7 +264,7 @@ class SalesService:
         if company_phone:
             lines.append(f"Tel: {company_phone}".center(32))
         lines.append("=" * 32)
-        lines.append(f"FAKTURA №: {inv_num}")
+        lines.append(f"FAKTURA No: {inv_num}")
         lines.append(f"Sana: {date_str}")
         if sale.assigned_employee_name:
             lines.append(f"Xodim: {sale.assigned_employee_name}")
@@ -273,7 +273,7 @@ class SalesService:
         if cust_phone:
             lines.append(f"Tel: {cust_phone}")
         lines.append("-" * 32)
-        lines.append(f"{item_name[:20]:<20} {int(sale.quantity)}dona")
+        lines.append(f"{item_name[:20]:<20} {int(sale.quantity)} dona")
         lines.append(f"Narx: {int(sale.unit_price):,} so'm".replace(",", " "))
         lines.append(f"Jami: {int(sale.subtotal):,} so'm".replace(",", " "))
         if sale.discount_amount > 0:
@@ -286,6 +286,7 @@ class SalesService:
         lines.append("=" * 32)
         if sale.warranty_period:
             lines.append(f"Kafolat muddati: {sale.warranty_period}")
+        lines.append("-" * 32)
         lines.append("Xaridingiz uchun rahmat!".center(32))
         lines.append("\n\n")
 
@@ -300,6 +301,119 @@ class SalesService:
             "paper_width": "80mm/58mm",
             "auto_cut": True
         }
+
+    @staticmethod
+    def generate_thermal_html(sale_id: str) -> str:
+        data = SalesService.generate_receipt_data(sale_id)
+        comp = data["company"]
+        sale_info = data["sale_info"]
+        cust = data["customer"]
+        item = data["item"]
+        fin = data["financials"]
+        warranty = data["warranty"]
+
+        inv_num = sale_info["invoice_number"] or f"DOC-{sale_info['id'][:6]}"
+        date_str = sale_info["date"]
+        assigned_emp = sale_info["assigned_employee"]
+
+        subtotal_str = f"{int(fin['subtotal']):,} UZS".replace(",", " ")
+        disc_str = f"-{int(fin['discount_amount']):,} UZS".replace(",", " ") if fin['discount_amount'] > 0 else ""
+        tax_str = f"+{int(fin['tax_amount']):,} UZS".replace(",", " ") if fin['tax_amount'] > 0 else ""
+        total_str = f"{int(fin['total_amount']):,} UZS".replace(",", " ")
+
+        html_content = f"""<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Chek #{inv_num}</title>
+    <style>
+        @page {{
+            size: 80mm auto;
+            margin: 0mm;
+        }}
+        @media print {{
+            body {{
+                width: 78mm;
+                margin: 0 auto;
+                padding: 2mm 0;
+            }}
+        }}
+        body {{
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.3;
+            color: #000000;
+            background-color: #ffffff;
+            width: 78mm;
+            margin: 0 auto;
+            padding: 4px;
+            font-weight: 600;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }}
+        .text-center {{ text-align: center; }}
+        .text-right {{ text-align: right; }}
+        .bold {{ font-weight: 800; }}
+        .header-title {{ font-size: 16px; font-weight: 900; margin-bottom: 2px; text-transform: uppercase; }}
+        .divider {{ border-top: 1px dashed #000000; margin: 6px 0; }}
+        .double-divider {{ border-top: 2px solid #000000; margin: 6px 0; }}
+        .flex-between {{ display: flex; justify-content: space-between; font-size: 13px; }}
+        .item-table {{ width: 100%; border-collapse: collapse; margin: 6px 0; }}
+        .item-table th, .item-table td {{ text-align: left; padding: 2px 0; font-size: 13px; font-weight: 700; }}
+        .total-box {{ font-size: 16px; font-weight: 900; border: 2px solid #000000; padding: 4px; margin: 6px 0; text-align: center; }}
+    </style>
+</head>
+<body onload="window.print()">
+    <div class="text-center header-title">{comp['name']}</div>
+    {f'<div class="text-center">{comp["address"]}</div>' if comp["address"] else ''}
+    {f'<div class="text-center">Tel: {comp["phone"]}</div>' if comp["phone"] else ''}
+    
+    <div class="double-divider"></div>
+    
+    <div class="flex-between"><span>FAKTURA No:</span><span class="bold">{inv_num}</span></div>
+    <div class="flex-between"><span>Sana:</span><span>{date_str}</span></div>
+    {f'<div class="flex-between"><span>Xodim:</span><span>{assigned_emp}</span></div>' if assigned_emp else ''}
+    
+    <div class="divider"></div>
+    
+    <div><span class="bold">Xaridor:</span> {cust['name']}</div>
+    {f'<div><span class="bold">Tel:</span> {cust["phone"]}</div>' if cust["phone"] else ''}
+    {f'<div><span class="bold">Manzil:</span> {cust["address"]}</div>' if cust["address"] else ''}
+    
+    <div class="divider"></div>
+    
+    <table class="item-table">
+        <tr>
+            <th style="width: 55%;">Mahsulot</th>
+            <th style="width: 15%; text-align: center;">Mqd</th>
+            <th style="width: 30%; text-align: right;">Narx</th>
+        </tr>
+        <tr>
+            <td>{item['name']}</td>
+            <td style="text-align: center;">{int(item['quantity'])}</td>
+            <td style="text-align: right;">{int(item['unit_price']):,}</td>
+        </tr>
+    </table>
+    
+    <div class="divider"></div>
+    
+    <div class="flex-between"><span>Jami qiymat:</span><span>{subtotal_str}</span></div>
+    {f'<div class="flex-between"><span>Chegirma:</span><span>{disc_str}</span></div>' if disc_str else ''}
+    {f'<div class="flex-between"><span>Soliq (12%):</span><span>{tax_str}</span></div>' if tax_str else ''}
+    
+    <div class="total-box">
+        TO'LOV SUMMASI: {total_str}
+    </div>
+    
+    <div class="flex-between"><span>To'lov holati:</span><span class="bold">{sale_info['payment_status']}</span></div>
+    
+    {f'<div class="divider"></div><div class="text-center">Kafolat muddati: <span class="bold">{warranty["period"]}</span></div>' if warranty["period"] else ''}
+    
+    <div class="double-divider"></div>
+    <div class="text-center bold" style="margin-top: 6px;">Xaridingiz uchun rahmat!</div>
+</body>
+</html>"""
+        return html_content
 
     @staticmethod
     def get_multi(
