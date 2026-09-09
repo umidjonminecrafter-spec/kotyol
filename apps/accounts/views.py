@@ -27,7 +27,20 @@ def register_view(request):
     serializer = RegisterRequestSerializer(data=request.data)
     serializer.is_valid(raise_exception=True)
     user = AuthService.register_user(serializer.validated_data, request=request)
-    return Response({'success': True, 'data': _user_info(user)})
+    from core.security import create_access_token, create_refresh_token
+    access_token = create_access_token(subject=user.id, role=user.role)
+    refresh_token = create_refresh_token(subject=user.id)
+    u_data = _user_info(user)
+    return Response({
+        'success': True,
+        'data': {
+            **u_data,
+            'access_token': access_token,
+            'refresh_token': refresh_token,
+            'token_type': 'bearer',
+            'user': u_data,
+        },
+    })
 
 
 @api_view(['GET'])

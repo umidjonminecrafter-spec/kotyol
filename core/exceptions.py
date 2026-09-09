@@ -1,7 +1,10 @@
+import logging
 from rest_framework.views import exception_handler
 from rest_framework.response import Response
 from rest_framework.exceptions import APIException
 from rest_framework import status
+
+logger = logging.getLogger('kotyol.exceptions')
 
 
 class CustomAppException(APIException):
@@ -69,11 +72,12 @@ def custom_exception_handler(exc, context):
         return response
 
     # Unhandled exception
+    logger.error(f"[Unhandled API Exception] {exc}", exc_info=True)
     return Response(
         {
             'success': False,
             'error_code': 'INTERNAL_SERVER_ERROR',
-            'message': 'Kutilmagan server xatoligi yuz berdi',
+            'message': str(exc) if str(exc) else 'Kutilmagan server xatoligi yuz berdi',
             'errors': [{'field': 'server', 'message': str(exc)}],
         },
         status=status.HTTP_500_INTERNAL_SERVER_ERROR,

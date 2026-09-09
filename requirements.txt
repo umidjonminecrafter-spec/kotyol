@@ -4,4 +4,6 @@ django-cors-headers>=4.3
 pyjwt>=2.8.0
 bcrypt>=4.1.2
 python-dotenv>=1.0.0
-gunicorn>=21.2.0
+gunicorn
+dj-database-url>=2.1.0
+psycopg2-binary>=2.9.9

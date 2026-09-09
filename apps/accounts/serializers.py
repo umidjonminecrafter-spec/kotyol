@@ -10,10 +10,10 @@ class LoginRequestSerializer(serializers.Serializer):
 class RegisterRequestSerializer(serializers.Serializer):
     phone = serializers.CharField()
     password = serializers.CharField()
-    full_name = serializers.CharField()
-    organization_name = serializers.CharField()
-    branch_name = serializers.CharField()
-    currency = serializers.CharField()
+    full_name = serializers.CharField(required=False, allow_blank=True, default='')
+    organization_name = serializers.CharField(required=False, allow_blank=True, default='')
+    branch_name = serializers.CharField(required=False, allow_blank=True, default='')
+    currency = serializers.CharField(required=False, allow_blank=True, default='UZS')
 
 
 class UserCreateSerializer(serializers.Serializer):

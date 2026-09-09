@@ -8,33 +8,47 @@ from rest_framework import status
 class AuthService:
     @staticmethod
     def register_user(data, request=None):
-        if User.objects.filter(username=data['phone']).exists():
+        phone_val = str(data['phone']).strip()
+        if not phone_val:
+            raise CustomAppException(
+                message='Telefon raqami kiritilishi shart',
+                status_code=status.HTTP_400_BAD_REQUEST,
+            )
+
+        if User.objects.filter(username=phone_val).exists() or User.objects.filter(phone=phone_val).exists():
             raise CustomAppException(
                 message='Ushbu telefon raqami bilan foydalanuvchi allaqachon mavjud',
                 status_code=status.HTTP_400_BAD_REQUEST,
             )
 
+        org_name = data.get('organization_name') or "Kotyol Group"
+        branch_name = data.get('branch_name') or "Asosiy filial"
+        full_name = data.get('full_name') or "Admin"
+        currency_val = data.get('currency') or 'UZS'
+
         # 1. Create Organization
-        org = Organization.objects.create(name=data['organization_name'])
+        org = Organization.objects.create(name=org_name)
 
         # 2. Create default Branch
         branch = Branch.objects.create(
             organization=org,
-            name=data['branch_name'],
+            name=branch_name,
             code='MAIN-BRANCH',
         )
 
         # 3. Create Admin User linked to organization & branch
         user = User.objects.create(
-            username=data['phone'],
+            username=phone_val,
             hashed_password=get_password_hash(data['password']),
-            full_name=data['full_name'],
-            phone=data['phone'],
+            full_name=full_name,
+            phone=phone_val,
             role='ADMIN',
-            organization_name=data['organization_name'],
-            branch_name=data['branch_name'],
+            organization_name=org_name,
+            branch_name=branch_name,
             organization=org,
             branch=branch,
+            organization_id=org.id,
+            branch_id=branch.id,
             status='ACTIVE',
         )
 
@@ -42,16 +56,20 @@ class AuthService:
         company = Company.objects.first()
         if not company:
             Company.objects.create(
-                name=data['organization_name'],
-                phone=data['phone'],
-                currency=data.get('currency', 'USD'),
+                name=org_name,
+                phone=phone_val,
+                currency=currency_val,
                 timezone='Asia/Tashkent (UTC+5)',
                 date_format='YYYY-MM-DD',
+                organization_id=org.id,
+                branch_id=branch.id,
             )
         else:
-            company.name = data['organization_name']
-            company.phone = data['phone']
-            company.currency = data.get('currency', 'USD')
+            company.name = org_name
+            company.phone = phone_val
+            company.currency = currency_val
+            company.organization_id = org.id
+            company.branch_id = branch.id
             company.save()
 
         return user
