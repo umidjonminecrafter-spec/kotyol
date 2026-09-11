@@ -5,7 +5,7 @@ import sys
 
 
 def auto_fix_inconsistent_migrations():
-    """Auto-reconciles ghost migrations and missing migration dependencies before migrate runs."""
+    """Auto-reconciles ghost migrations, pre-existing system tables, and missing migration dependencies."""
     if len(sys.argv) > 1 and sys.argv[1] in ('migrate', 'showmigrations'):
         try:
             import django
@@ -16,28 +16,23 @@ def auto_fix_inconsistent_migrations():
 
             tables = set(connection.introspection.table_names())
             if 'django_migrations' in tables:
-                with connection.cursor() as cursor:
-                    # Validate individual apps whose initial tables might be missing
-                    app_table_map = {
-                        'accounts': 'users',
-                        'master_data': 'company_profile',
-                        'finance': 'financial_transactions',
-                        'products': 'products',
-                        'production': 'production_orders',
-                        'sales': 'sales',
-                        'purchasing': 'purchases',
-                        'warehouse': 'warehouses',
-                        'audit': 'audit_logs',
-                    }
-                    for app_name, table_name in app_table_map.items():
-                        if table_name not in tables:
-                            cursor.execute("DELETE FROM django_migrations WHERE app = %s", [app_name])
-
-                # Re-load graph to check for missing parent dependencies
                 loader = MigrationLoader(connection, ignore_no_migrations=True)
                 applied = set(loader.applied_migrations.keys())
 
                 with connection.cursor() as cursor:
+                    # If standard system tables already exist from previous projects in the same DB, mark standard migrations as applied
+                    if 'auth_permission' in tables or 'django_content_type' in tables:
+                        django_builtins = {'contenttypes', 'auth', 'admin', 'sessions'}
+                        for (app, name) in list(loader.graph.nodes.keys()):
+                            if app in django_builtins and (app, name) not in applied:
+                                cursor.execute(
+                                    "INSERT INTO django_migrations (app, name, applied) VALUES (%s, %s, %s)",
+                                    [app, name, timezone.now()]
+                                )
+                                applied.add((app, name))
+                                print(f"[Auto-Fix] Pre-existing table detected. Marked built-in {app}.{name} as applied.")
+
+                    # Reconcile missing parent dependencies across all applied migrations
                     for (app, name), node in loader.graph.nodes.items():
                         if (app, name) in applied:
                             for parent in node.dependencies:
@@ -64,9 +59,6 @@ def main():
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
-
-    if len(sys.argv) > 1 and sys.argv[1] == 'migrate' and '--fake-initial' not in sys.argv:
-        sys.argv.append('--fake-initial')
 
     auto_fix_inconsistent_migrations()
     execute_from_command_line(sys.argv)

@@ -15,31 +15,21 @@ def fix_inconsistent_history():
         if 'django_migrations' not in tables:
             return
 
-        with connection.cursor() as cursor:
-            if 'users' not in tables:
-                cursor.execute("DELETE FROM django_migrations;")
-                print("[Auto-Fix] 'users' table missing. Reset django_migrations history to allow full initial schema creation.")
-            else:
-                app_table_map = {
-                    'accounts': 'users',
-                    'master_data': 'company_profile',
-                    'finance': 'financial_transactions',
-                    'products': 'products',
-                    'production': 'production_orders',
-                    'sales': 'sales',
-                    'purchasing': 'purchases',
-                    'warehouse': 'warehouses',
-                    'audit': 'audit_logs',
-                }
-                for app_name, table_name in app_table_map.items():
-                    if table_name not in tables:
-                        cursor.execute("DELETE FROM django_migrations WHERE app = %s", [app_name])
-                        print(f"[Auto-Fix] Table '{table_name}' missing. Removed '{app_name}' from django_migrations.")
-
         loader = MigrationLoader(connection, ignore_no_migrations=True)
         applied = set(loader.applied_migrations.keys())
 
         with connection.cursor() as cursor:
+            if 'auth_permission' in tables or 'django_content_type' in tables:
+                django_builtins = {'contenttypes', 'auth', 'admin', 'sessions'}
+                for (app, name) in list(loader.graph.nodes.keys()):
+                    if app in django_builtins and (app, name) not in applied:
+                        cursor.execute(
+                            "INSERT INTO django_migrations (app, name, applied) VALUES (%s, %s, %s)",
+                            [app, name, timezone.now()]
+                        )
+                        applied.add((app, name))
+                        print(f"[Auto-Fix] Pre-existing table detected. Marked built-in {app}.{name} as applied.")
+
             for (app, name), node in loader.graph.nodes.items():
                 if (app, name) in applied:
                     for parent in node.dependencies:
