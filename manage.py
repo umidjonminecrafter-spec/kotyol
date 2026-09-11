@@ -17,27 +17,21 @@ def auto_fix_inconsistent_migrations():
             tables = set(connection.introspection.table_names())
             if 'django_migrations' in tables:
                 with connection.cursor() as cursor:
-                    # If core 'users' table does not physically exist, all migrations must be re-applied from scratch
-                    if 'users' not in tables:
-                        cursor.execute("DELETE FROM django_migrations;")
-                        print("[Auto-Fix] 'users' table missing. Reset django_migrations history to allow full initial schema creation.")
-                    else:
-                        # Validate individual apps whose initial tables might be missing
-                        app_table_map = {
-                            'accounts': 'users',
-                            'master_data': 'company_profile',
-                            'finance': 'financial_transactions',
-                            'products': 'products',
-                            'production': 'production_orders',
-                            'sales': 'sales',
-                            'purchasing': 'purchases',
-                            'warehouse': 'warehouses',
-                            'audit': 'audit_logs',
-                        }
-                        for app_name, table_name in app_table_map.items():
-                            if table_name not in tables:
-                                cursor.execute("DELETE FROM django_migrations WHERE app = %s", [app_name])
-                                print(f"[Auto-Fix] Table '{table_name}' missing. Removed '{app_name}' from django_migrations.")
+                    # Validate individual apps whose initial tables might be missing
+                    app_table_map = {
+                        'accounts': 'users',
+                        'master_data': 'company_profile',
+                        'finance': 'financial_transactions',
+                        'products': 'products',
+                        'production': 'production_orders',
+                        'sales': 'sales',
+                        'purchasing': 'purchases',
+                        'warehouse': 'warehouses',
+                        'audit': 'audit_logs',
+                    }
+                    for app_name, table_name in app_table_map.items():
+                        if table_name not in tables:
+                            cursor.execute("DELETE FROM django_migrations WHERE app = %s", [app_name])
 
                 # Re-load graph to check for missing parent dependencies
                 loader = MigrationLoader(connection, ignore_no_migrations=True)
@@ -70,6 +64,9 @@ def main():
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
+
+    if len(sys.argv) > 1 and sys.argv[1] == 'migrate' and '--fake-initial' not in sys.argv:
+        sys.argv.append('--fake-initial')
 
     auto_fix_inconsistent_migrations()
     execute_from_command_line(sys.argv)
