@@ -27,3 +27,5 @@ ENV/
 # Project-specific local files
 kotyol.db
 uploads/
+*.log
+*.sqlite3
